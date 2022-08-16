@@ -3,9 +3,22 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;You can add or remove characters as you need
-endchars = {Space}{Enter}
+#Hotstring EndChars
+endchars = {Space}`t
 ;here all the hotstrings
-;all use 
+;Custom Macros archive
+
+#Include %A_ScriptDir%\Sugarcube Essentials Macros.ahk
+;html goodies
+:*B0::#::
+Gosub, Label
+return
+:*B0::.::
+Gosub, Label
+return
+
+
+;all use
 :*B0::<<::
 Gosub, Label
 return
@@ -65,7 +78,7 @@ return
 :*B0::textarea::
 Gosub, Label
 return
-:*B0::texbox::
+:*B0::textbox::
 Gosub, Label
 return
 
@@ -144,7 +157,8 @@ return
 Gosub, Label
 return
 ;Does not need modifiers
-:*::nobr::<<nobr>><</nobr>>{Left 9}
+:*::nobr::
+<<nobr>><</nobr>>{Left 9}`n`n{Up}`t
 return
 ;Does not need modifiers
 :*::br::<br>
@@ -182,8 +196,8 @@ return
 :*::continue::<<continue>>
 return
 ;Scripting Macros
-:*B0::script::
-<<script>><</script>>{Left 11}
+:*::script::
+<<script>><</script>>{Left 11}`n`n{Up}`t
 return
 :*B0::run::
 Gosub, Label
@@ -196,3 +210,4 @@ return
 cursorPos:
 split := StrSplit(text, "|")
 SendInput % "{Left "StrLen(split[2])"}{bs}"
+return
