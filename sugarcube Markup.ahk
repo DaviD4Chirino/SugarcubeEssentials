@@ -30,3 +30,11 @@
   Send ^v
   clipboard = %clipsaved%
   return
+  ^q::
+  clipsaved = %clipboard%
+  Send ^x
+  Sleep, 250
+  clipboard = @@.highlight;%clipboard%@@
+  Send ^v
+  clipboard = %clipsaved%
+  return

@@ -1,9 +1,11 @@
 Input, modifier, V, %endchars%
-;macroextra>othermacro>thirdmacro
 modifier := StrReplace(modifier, ",", " ")
+extras := StrSplit(modifier, ";")
 RegexMatch(ErrorLevel, "EndKey:\K.*", EndKey)
 SendInput % "{bs " strlen(modifier)+strlen(A_ThisHotkey)-4 "}"
+modifier := RegExReplace(modifier, ";(.*)", "")
 #Include  %A_ScriptDir%\htmlgoodies.ahk
+#Include  %A_ScriptDir%\personal cases.ahk
 switch A_ThisHotkey {
   case ":*B0::<<":
     text = <<%modifier%>>`n`t|`n<</%modifier%>>

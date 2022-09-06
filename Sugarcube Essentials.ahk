@@ -10,12 +10,7 @@ endchars = {Space}`t
 
 #Include %A_ScriptDir%\Sugarcube Essentials Macros.ahk
 ;html goodies
-:*B0::#::
-Gosub, Label
-return
-:*B0::.::
-Gosub, Label
-return
+#Include %A_ScriptDir%\personal.ahk
 
 
 ;all use
@@ -162,6 +157,8 @@ return
 return
 ;Does not need modifiers
 :*::br::<br>
+return
+:*::case::<<case>>{Left 2}
 return
 :*B0::silently::
 Gosub, Label
